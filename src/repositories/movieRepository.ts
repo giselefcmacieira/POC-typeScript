@@ -53,4 +53,4 @@ function selectMovies(movies: ReadMovie){
     )
 }
 
-export const movieRepository = {createMovie, updateMovie, selectById}
+export const movieRepository = {createMovie, updateMovie, selectById, selectMovies}

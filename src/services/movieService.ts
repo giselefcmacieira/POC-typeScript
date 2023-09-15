@@ -1,5 +1,5 @@
 import { conflictError } from "@/errors/conflict";
-import { CreateMovie, Resp, UpdateMovie } from "@/protocols/protocols";
+import { CreateMovie, ReadMovie, Resp, UpdateMovie } from "@/protocols/protocols";
 import { movieRepository } from "@/repositories/movieRepository";
 
 function createMovie(movie: CreateMovie){
@@ -14,4 +14,8 @@ async function updateMovie(movie: UpdateMovie){
     return movieRepository.updateMovie(movie)
 }
 
-export const movieServices = {createMovie, updateMovie}
+function readMovies(movie: ReadMovie){
+    return movieRepository.selectMovies(movie)
+}
+
+export const movieServices = {createMovie, updateMovie, readMovies}
