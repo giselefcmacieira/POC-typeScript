@@ -1,6 +1,11 @@
-export type ConfigDatabase = {
-    connectionString: string;
-    ssl?: boolean
+export type Inf = {
+    id: number;
+    status: boolean;
+}
+
+export type Resp = {
+    qtd: number;
+    inf: Inf;
 }
 
 export type Movie = {
@@ -13,3 +18,10 @@ export type Movie = {
 }
 
 export type CreateMovie = Omit<Movie, "id">
+
+export type UpdateMovie = Omit<Movie, "name" | "platform" | "type">
+
+export type ReadMovie = {
+    type?: string;
+    platform?: string
+}

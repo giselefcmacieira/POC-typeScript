@@ -1,10 +1,10 @@
-import express from "express"
+import express, {Express} from "express"
 import "express-async-errors"
 import cors from "cors"
 import router from "./routes/indexRoute"
 import errorHandler from "./middlewares/error-middlewares"
 
-const app = express()
+const app: Express = express()
 app.use(cors())
 app.use(express.json())
 

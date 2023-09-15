@@ -1,9 +1,13 @@
 import { NextFunction, Request, Response } from "express";
+import httpStatus from "http-status";
 
 
 export default function errorHandler(error: {type: string, message: string}, req: Request, res: Response, next: NextFunction){
     if (error.type === "invalidBody") {
-        return res.status(422).send(error.message);
+        return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);
+    }
+    if(error.type === "conflict"){
+        return res.status(httpStatus.CONFLICT).send(error.message)
     }
     console.log(error)
     res.status(500).send("Foi mal, deu alguma coisa errada com o servidor 😢");

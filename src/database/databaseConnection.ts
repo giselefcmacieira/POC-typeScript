@@ -1,12 +1,11 @@
 import dotenv from "dotenv"
-import pg from "pg"
-import { ConfigDatabase } from "@/protocols/protocols"
+import pg, { ClientConfig } from "pg"
 
 dotenv.config()
 
 const { Pool } = pg
 
-const configDatabase: ConfigDatabase = {
+const configDatabase: ClientConfig = {
     connectionString: process.env.DATABASE_URL,
 }
 
