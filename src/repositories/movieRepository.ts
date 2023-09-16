@@ -53,4 +53,8 @@ function selectMovies(movies: ReadMovie){
     )
 }
 
-export const movieRepository = {createMovie, updateMovie, selectById, selectMovies}
+function deleteMovie(id: number){
+    return db.query(`DELETE FROM "movies" WHERE id=$1`, [id])
+}
+
+export const movieRepository = {createMovie, updateMovie, selectById, selectMovies, deleteMovie}

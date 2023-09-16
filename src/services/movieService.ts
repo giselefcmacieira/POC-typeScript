@@ -1,3 +1,4 @@
+import { badRequestError } from "@/errors/badRequest";
 import { conflictError } from "@/errors/conflict";
 import { CreateMovie, ReadMovie, Resp, UpdateMovie } from "@/protocols/protocols";
 import { movieRepository } from "@/repositories/movieRepository";
@@ -18,4 +19,12 @@ function readMovies(movie: ReadMovie){
     return movieRepository.selectMovies(movie)
 }
 
-export const movieServices = {createMovie, updateMovie, readMovies}
+async function deleteMovie(id: number){
+    const existingMovie: Resp = await movieRepository.selectById(id)
+    if(existingMovie.qtd === 0){
+        throw badRequestError('This movie do not exist!')
+    }
+    return movieRepository.deleteMovie(id)
+}
+
+export const movieServices = {createMovie, updateMovie, readMovies, deleteMovie}
