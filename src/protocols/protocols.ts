@@ -3,6 +3,11 @@ export type Inf = {
     status: boolean;
 }
 
+export type error = {
+    type: string;
+    message: string | Array<string>;
+}
+
 export type Resp = {
     qtd: number;
     inf: Inf;

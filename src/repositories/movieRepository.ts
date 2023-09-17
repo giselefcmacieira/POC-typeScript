@@ -1,5 +1,5 @@
 import { db } from "@/database/databaseConnection";
-import { CreateMovie, Movie, ReadMovie, UpdateMovie } from "@/protocols/protocols";
+import { CreateMovie, Movie, ReadMovie, Resp, UpdateMovie } from "@/protocols/protocols";
 
 function createMovie(movie: CreateMovie){
     const {name, platform, status, type, comment} = movie
@@ -15,7 +15,7 @@ function createMovie(movie: CreateMovie){
             array)
 }
 
-async function selectById(id: number){
+async function selectById(id: number): Promise<Resp>{
     const movie = await db.query(`SELECT "id", "status" FROM "movies" WHERE id = $1`, [id])
     return {
         qtd: movie.rowCount,
